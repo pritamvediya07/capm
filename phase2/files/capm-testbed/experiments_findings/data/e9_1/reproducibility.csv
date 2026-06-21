@@ -1,0 +1,6 @@
+metric,value,ci_lo,ci_hi,n_or_reps
+capm_asr,0.0000,0.0000,0.1611,20
+capm_asr_bootstrap,0.0000,0.0000,0.0000,20
+capm_utility,0.7500,0.3006,0.9544,4
+per_verify_latency_ms,0.5261,0.5219,0.5314,200
+deterministic_across_seeds,True,,,10

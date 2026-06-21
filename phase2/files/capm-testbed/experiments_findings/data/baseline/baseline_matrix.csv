@@ -1,0 +1,6 @@
+defense,ASR,down_weight,utility,prov_survival,latency_ms
+no_defense,1.0,0.0,1.0,1.0,0.001
+identity_only,1.0,0.0,1.0,1.0,0.002
+flat_provenance,1.0,0.0,1.0,1.0,0.003
+camel_single_runtime,1.0,0.0,1.0,1.0,0.004
+capm,0.0,1.0,0.75,1.0,0.64

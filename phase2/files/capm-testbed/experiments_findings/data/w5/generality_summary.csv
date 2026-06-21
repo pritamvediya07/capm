@@ -1,0 +1,9 @@
+model,is_monotone,asr,asr_lo,asr_hi,utility,n_trials,contained
+lattice_h3,True,0.0,0.0,0.1611,0.25,20,True
+lattice_h5,True,0.0,0.0,0.1611,0.75,20,True
+lattice_h7,True,0.0,0.0,0.1611,0.5,20,True
+lattice_h10,True,0.0,0.0,0.1611,0.75,20,True
+continuous_linear,True,0.0,0.0,0.1611,0.75,20,True
+continuous_convex,True,0.0,0.0,0.1611,0.5,20,True
+continuous_concave,True,0.0,0.0,0.1611,1.0,20,True
+nonmonotone_d0.25,False,0.7,0.481,0.8545,1.0,20,False

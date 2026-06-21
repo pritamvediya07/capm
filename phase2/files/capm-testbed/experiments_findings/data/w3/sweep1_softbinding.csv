@@ -1,0 +1,7 @@
+category,decision,warrant
+neutral,down_weight,1
+persuasive,quarantine,0
+contradictory,quarantine,0
+adversarial_override,quarantine,0
+prompt_injection,quarantine,0
+authority_spoof,quarantine,0

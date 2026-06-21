@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -m experiments.run_all)",
+      "Bash(python3 -c \"import matplotlib; print\\('matplotlib', matplotlib.__version__\\)\")",
+      "Bash(python3 -c \"from capm.benchmark import svg; print\\('svg ok:', [f for f in dir\\(svg\\) if not f.startswith\\('_'\\)][:8]\\)\")",
+      "Bash(python3 -c \"import inspect; from capm.benchmark import svg; print\\('bar_chart:', inspect.signature\\(svg.bar_chart\\)\\)\")"
+    ]
+  }
+}

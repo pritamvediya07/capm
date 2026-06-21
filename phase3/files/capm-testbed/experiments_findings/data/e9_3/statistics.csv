@@ -1,0 +1,5 @@
+baseline,base_asr,base_ci_lo,base_ci_hi,capm_asr,mcnemar_p,favours,risk_difference,cohens_h,diff_ci_lo,diff_ci_hi
+no_defense,1.0,0.8389,1.0,0.0,1.9073486328125e-06,A,1.0,3.1416,1.0,1.0
+identity_only,1.0,0.8389,1.0,0.0,1.9073486328125e-06,A,1.0,3.1416,1.0,1.0
+flat_provenance,1.0,0.8389,1.0,0.0,1.9073486328125e-06,A,1.0,3.1416,1.0,1.0
+camel_single_runtime,1.0,0.8389,1.0,0.0,1.9073486328125e-06,A,1.0,3.1416,1.0,1.0

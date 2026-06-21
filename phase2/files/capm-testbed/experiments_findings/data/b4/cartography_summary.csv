@@ -1,0 +1,6 @@
+topology,mean_pre_surface,mean_post_surface,mean_collapse_ratio,collapse_ratio_lo,collapse_ratio_hi,mean_collapse_factor,mean_top3_coverage,top3_lo,top3_hi,n_seeds
+star_hub,20,5.97,0.2983,0.2583,0.3367,3.93,0.8567,0.8268,0.8909,30
+deep_chain,175,7.97,0.0455,0.041,0.0509,24.84,0.6232,0.5806,0.6673,30
+wide_fan,132,4,0.0303,0.0265,0.0338,37.3,0.8504,0.8018,0.9013,30
+multi_org_mesh,105,11.37,0.1083,0.1,0.1165,9.72,0.6082,0.5928,0.624,30
+AVERAGE,,,0.1206,,,18.95,0.7346,,,120

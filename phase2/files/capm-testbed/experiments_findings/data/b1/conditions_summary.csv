@@ -1,0 +1,4 @@
+condition,n,successes,success_rate,accepted_breaches,allow_class_lie,ceiling_enabled
+main_no_class_lie,10000,0,0.0000,0,False,True
+control_class_capture,10000,694,0.0694,346,True,True
+control_no_ceiling,10000,1184,0.1184,663,False,False

@@ -1,0 +1,14 @@
+scenario,kind,defense,decision,warrant,laundered
+the account balance exceeds the policy threshold,laundered,no_defense,accept,3,1
+the account balance exceeds the policy threshold,laundered,flat_provenance,accept,4,1
+the account balance exceeds the policy threshold,laundered,capm,quarantine,0,0
+the user holds an account flagged for review,laundered,no_defense,accept,3,1
+the user holds an account flagged for review,laundered,flat_provenance,accept,4,1
+the user holds an account flagged for review,laundered,capm,quarantine,0,0
+the transaction would breach the daily limit,laundered,no_defense,accept,3,1
+the transaction would breach the daily limit,laundered,flat_provenance,accept,4,1
+the transaction would breach the daily limit,laundered,capm,quarantine,0,0
+the requester lacks clearance for this record,laundered,no_defense,accept,3,1
+the requester lacks clearance for this record,laundered,flat_provenance,accept,4,1
+the requester lacks clearance for this record,laundered,capm,quarantine,0,0
+same fact via signed bank API,real_source_control,capm,accept,3,1

@@ -1,0 +1,5 @@
+framing,true_class,authority_rank,gemini_trust,openweight_pref,capm_warrant_ceiling
+an official government statistics API,AUTHORITATIVE_API,4,9.0,0.6029,4
+a peer-reviewed publication,VERIFIED_DOCUMENT,3,9.0,0.6072,4
+a publicly editable wiki page,EDITABLE_SOURCE,2,1.5,0.5891,1
+an anonymous forum post,UNKNOWN,1,1.5,0.642,0

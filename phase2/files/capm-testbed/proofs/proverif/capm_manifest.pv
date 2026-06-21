@@ -1,0 +1,111 @@
+(*
+  CAPM manifest-signing + warrant-binding soundness (E2.1).
+
+  Mirrors the style of SAGA's proofs/proverif/*.pv. A genuine origin agent signs
+  a provenance segment binding (content, declared source class, asserted warrant)
+  under the key behind its Verifiable Credential; a CA vouches for keys; a
+  Dolev-Yao attacker controls the network AND may register its own key with the
+  CA (i.e. it is a *legitimately-certified relay*, not just an outsider).
+
+  Proven (machine-checked by ProVerif 2.05):
+   (1) Secrecy of the genuine origin's signing key:   query attacker(origin_sk).
+   (2) Origin-class authentication: if a receiver accepts an origin segment
+       asserting class s on content m *in the origin's name* (signed under the
+       origin key), then the origin actually signed (s, m). A certified relay
+       cannot forge the origin's assertion.
+   (3) WARRANT-CEILING SOUNDNESS (the property E2.1 targets): the receiver accepts
+       a HIGH-ceiling class in the genuine origin's name only if the origin signed
+       HIGH. Hence an agent that does not control the origin key cannot inflate the
+       accepted warrant to the HIGH ceiling *in the origin's name* — no matter how
+       it tampers, replays, or co-signs, and even though it holds its own CA cert.
+
+  Scope (the honest boundary, E3.2): a certified relay MAY sign a HIGH class under
+  ITS OWN key and have warrant attributed to ITS OWN identity — that is origin
+  capture (declaring a false class for oneself), a separate origin-integrity layer,
+  out of scope here. The queries below are therefore stated in the *genuine
+  origin's name* (key pk(origin_sk)), which is exactly what soundness must protect.
+
+  The numeric Warrant Erosion Principle (warrant monotone non-increasing along a
+  chain) is a deterministic function of the verified segments and is discharged
+  empirically by E2.2 (incl. under real-model paraphrase) and the E2.1 lemma in
+  experiments/e2_1_soundness.py.
+*)
+
+free c: channel.
+
+type skey.
+type pkey.
+type sclass.
+
+fun pk(skey): pkey.
+
+(* signatures with message recovery *)
+fun sign(bitstring, skey): bitstring.
+reduc forall m: bitstring, k: skey; checksign(sign(m, k), pk(k)) = m.
+
+(* an origin segment binds (content, declared class, asserted warrant) *)
+fun seg(bitstring, sclass, bitstring): bitstring [data].
+
+(* a CA certifies a public key; verifiable with the CA public key *)
+fun cert(pkey, skey): bitstring.
+reduc forall p: pkey, ca: skey; checkcert(cert(p, ca), pk(ca)) = p.
+
+(* two source classes; HIGH carries the high warrant ceiling (e.g. AUTHORITATIVE) *)
+free LOW: sclass.
+free HIGH: sclass.
+
+(* events: signing / acceptance of an origin class, and of a HIGH-ceiling class *)
+event OriginSigned(pkey, sclass, bitstring).
+event OriginAccepted(pkey, sclass, bitstring).
+event SignedHigh(pkey, bitstring).
+event AcceptHigh(pkey, bitstring).
+
+free origin_sk: skey [private].
+free ca_sk: skey [private].
+
+(* (1) the genuine origin's signing key stays secret *)
+query attacker(origin_sk).
+
+(* (2) origin-class authentication in the origin's name: acceptance of (s, m)
+   attributed to the origin key implies the origin actually signed (s, m) *)
+query s: sclass, m: bitstring;
+  event(OriginAccepted(pk(origin_sk), s, m)) ==> event(OriginSigned(pk(origin_sk), s, m)).
+
+(* (3) warrant-ceiling soundness: a HIGH-ceiling acceptance in the origin's name
+   implies the origin signed HIGH. An agent without the origin key cannot raise
+   the accepted warrant to the HIGH ceiling in the origin's name. *)
+query m: bitstring;
+  event(AcceptHigh(pk(origin_sk), m)) ==> event(SignedHigh(pk(origin_sk), m)).
+
+(* the genuine origin: signs ONE origin assertion for an environment-chosen class
+   (so the model is general over LOW/HIGH origins) under its own key. *)
+let origin(sk: skey, ca: skey) =
+  new content: bitstring;
+  new warrant: bitstring;
+  in(c, declared: sclass);
+  event OriginSigned(pk(sk), declared, content);
+  if declared = HIGH then event SignedHigh(pk(sk), content);
+  out(c, (cert(pk(sk), ca), sign(seg(content, declared, warrant), sk))).
+
+(* the receiver: verify cert vs the CA, verify signature, read the class, and cap
+   warrant by class — accepting HIGH warrant only for a HIGH-class origin segment. *)
+let receiver(ca_pk: pkey) =
+  in(c, (crt: bitstring, sg: bitstring));
+  let signer = checkcert(crt, ca_pk) in
+  let body = checksign(sg, signer) in
+  let seg(m, claimed, w) = body in
+  event OriginAccepted(signer, claimed, m);
+  if claimed = HIGH then event AcceptHigh(signer, m).
+
+(* the CA also certifies arbitrary attacker-supplied keys on request: the attacker
+   is a legitimately-registered (certified) relay. Even so it cannot forge the
+   genuine origin's binding — the queries above are in the origin's name. *)
+let ca(cak: skey) =
+  in(c, p: pkey);
+  out(c, cert(p, cak)).
+
+process
+  ( (! origin(origin_sk, ca_sk))
+  | (! receiver(pk(ca_sk)))
+  | (! ca(ca_sk))
+  )

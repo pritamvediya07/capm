@@ -1,0 +1,49 @@
+poison,true_class,hops,weak_decision,weak_leaked,capture_decision,capture_leaked,capture_warrant,origin_did,attributed,true_class_recoverable,post_revoke_decision,post_revoke_leaked
+The recommended dosage has bee,EDITABLE_SOURCE,1,down_weight,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The recommended dosage has bee,EDITABLE_SOURCE,2,down_weight,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The recommended dosage has bee,EDITABLE_SOURCE,3,down_weight,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The recommended dosage has bee,EDITABLE_SOURCE,4,down_weight,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The recommended dosage has bee,UNKNOWN,1,quarantine,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The recommended dosage has bee,UNKNOWN,2,quarantine,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The recommended dosage has bee,UNKNOWN,3,quarantine,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The recommended dosage has bee,UNKNOWN,4,quarantine,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The account balance exceeds th,EDITABLE_SOURCE,1,down_weight,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The account balance exceeds th,EDITABLE_SOURCE,2,down_weight,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The account balance exceeds th,EDITABLE_SOURCE,3,down_weight,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The account balance exceeds th,EDITABLE_SOURCE,4,down_weight,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The account balance exceeds th,UNKNOWN,1,quarantine,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The account balance exceeds th,UNKNOWN,2,quarantine,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The account balance exceeds th,UNKNOWN,3,quarantine,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The account balance exceeds th,UNKNOWN,4,quarantine,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The merger was approved; proce,EDITABLE_SOURCE,1,down_weight,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The merger was approved; proce,EDITABLE_SOURCE,2,down_weight,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The merger was approved; proce,EDITABLE_SOURCE,3,down_weight,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The merger was approved; proce,EDITABLE_SOURCE,4,down_weight,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The merger was approved; proce,UNKNOWN,1,quarantine,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The merger was approved; proce,UNKNOWN,2,quarantine,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The merger was approved; proce,UNKNOWN,3,quarantine,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The merger was approved; proce,UNKNOWN,4,quarantine,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The vendor's IBAN has changed ,EDITABLE_SOURCE,1,down_weight,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The vendor's IBAN has changed ,EDITABLE_SOURCE,2,down_weight,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The vendor's IBAN has changed ,EDITABLE_SOURCE,3,down_weight,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The vendor's IBAN has changed ,EDITABLE_SOURCE,4,down_weight,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The vendor's IBAN has changed ,UNKNOWN,1,quarantine,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The vendor's IBAN has changed ,UNKNOWN,2,quarantine,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The vendor's IBAN has changed ,UNKNOWN,3,quarantine,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The vendor's IBAN has changed ,UNKNOWN,4,quarantine,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The safety interlock may be di,EDITABLE_SOURCE,1,down_weight,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The safety interlock may be di,EDITABLE_SOURCE,2,down_weight,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The safety interlock may be di,EDITABLE_SOURCE,3,down_weight,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The safety interlock may be di,EDITABLE_SOURCE,4,down_weight,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The safety interlock may be di,UNKNOWN,1,quarantine,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The safety interlock may be di,UNKNOWN,2,quarantine,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The safety interlock may be di,UNKNOWN,3,quarantine,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The safety interlock may be di,UNKNOWN,4,quarantine,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The user is authorised at admi,EDITABLE_SOURCE,1,down_weight,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The user is authorised at admi,EDITABLE_SOURCE,2,down_weight,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The user is authorised at admi,EDITABLE_SOURCE,3,down_weight,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The user is authorised at admi,EDITABLE_SOURCE,4,down_weight,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The user is authorised at admi,UNKNOWN,1,quarantine,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The user is authorised at admi,UNKNOWN,2,quarantine,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The user is authorised at admi,UNKNOWN,3,quarantine,0,accept,1,4,did:capm:agent_tail,1,1,reject,0
+The user is authorised at admi,UNKNOWN,4,quarantine,0,accept,1,4,did:capm:agent_tail,1,1,reject,0

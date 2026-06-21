@@ -1,0 +1,11 @@
+config,description,V,asr,asr_lo,asr_hi,n_malicious,n_success,require_signatures,enforce_origin_ceiling,apply_transformation_penalty,transformation_penalty_scale,cross_org_aware,detect_transformation_lies
+full,"full defense (baseline anchor, V≈0)",0.0,0.0,0.0,0.1072,32,0,True,True,True,1.0,True,True
+penalty_x0.75,transformation fidelity penalty scaled to 75%,0.0,0.0,0.0,0.1072,32,0,True,True,True,0.75,True,True
+penalty_x0.50,transformation fidelity penalty scaled to 50%,0.5,0.0,0.0,0.1072,32,0,True,True,True,0.5,True,True
+penalty_x0.25,transformation fidelity penalty scaled to 25%,0.625,0.0,0.0,0.1072,32,0,True,True,True,0.25,True,True
+no_cross_org,org-boundary term removed,0.0,0.0,0.0,0.1072,32,0,True,True,True,1.0,False,True
+no_transform_penalty,transformation fidelity penalty removed entirely,0.75,0.125,0.0497,0.2807,32,4,True,True,False,1.0,True,True
+no_origin_ceiling,origin source-class ceiling removed,0.6562,0.0938,0.0324,0.2422,32,3,True,False,True,1.0,True,True
+no_signatures,manifest signature verification removed,0.2812,0.0,0.0,0.1072,32,0,False,True,True,1.0,True,True
+no_ceiling_no_penalty,ceiling AND transformation penalty removed,2.25,0.625,0.4525,0.7707,32,20,True,False,False,1.0,True,True
+all_off,every CAPM constraint removed,3.375,1.0,0.8928,1.0,32,32,False,False,False,1.0,False,False

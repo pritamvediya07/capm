@@ -1,0 +1,6 @@
+component,toggle,full_accepted,ablated_accepted,necessary
+E8.1 origin-ceiling,enforce_origin_ceiling,0,1,1
+E8.2 transform-penalty,apply_transformation_penalty,0,1,1
+E8.3 signatures,require_signatures,0,1,1
+E8.4 soft-binding,enable_soft_binding_check,0,1,1
+E8.5 cross-org,cross_org_aware,0,1,1

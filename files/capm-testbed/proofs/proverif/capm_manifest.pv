@@ -1,0 +1,80 @@
+(*
+  CAPM manifest-signing + warrant-binding soundness (E2.1).
+
+  Mirrors the style of SAGA's proofs/proverif/*.pv. An origin agent signs a
+  provenance segment binding (content, declared source class, asserted warrant)
+  under the key behind its Verifiable Credential; a CA vouches for that key; a
+  Dolev-Yao attacker controls the network and may run rogue agents.
+
+  Proven:
+   (1) Secrecy of the origin signing key:           query attacker(origin_sk).
+   (2) Authentication of the origin class assertion: if a receiver accepts an
+       origin segment asserting source class s signed under key p, then the
+       holder of p actually signed an origin assertion for s. Hence a signer
+       who does not hold the origin key cannot make a receiver accept a class
+       it did not sign (the warrant-binding property).
+
+  The numeric Warrant Erosion Principle (warrant monotone non-increasing) is a
+  deterministic function of the verified segments and is discharged empirically
+  by E2.2 and the E2.1 lemma in experiments/e2_1_soundness.py.
+*)
+
+free c: channel.
+
+type skey.
+type pkey.
+type sclass.
+
+fun pk(skey): pkey.
+
+(* signatures with message recovery *)
+fun sign(bitstring, skey): bitstring.
+reduc forall m: bitstring, k: skey; checksign(sign(m, k), pk(k)) = m.
+
+(* an origin segment binds (content, declared class, asserted warrant) *)
+fun seg(bitstring, sclass, bitstring): bitstring [data].
+
+(* a CA certifies a public key; verifiable with the CA public key *)
+fun cert(pkey, skey): bitstring.
+reduc forall p: pkey, ca: skey; checkcert(cert(p, ca), pk(ca)) = p.
+
+(* events: the keyholder signed an origin for class s / a receiver accepted one *)
+event OriginSigned(pkey, sclass).
+event OriginAccepted(pkey, sclass).
+
+free origin_sk: skey [private].
+free ca_sk: skey [private].
+
+(* (1) signing-key secrecy *)
+query attacker(origin_sk).
+
+(* (2) origin-class authentication: acceptance implies the keyholder signed it *)
+query p: pkey, s: sclass;
+  event(OriginAccepted(p, s)) ==> event(OriginSigned(p, s)).
+
+(* the origin: signs exactly one origin assertion for a fresh class *)
+let origin(sk: skey, ca: skey) =
+  new content: bitstring;
+  new warrant: bitstring;
+  new CLASS_O: sclass;
+  event OriginSigned(pk(sk), CLASS_O);
+  out(c, (cert(pk(sk), ca), sign(seg(content, CLASS_O, warrant), sk))).
+
+(* the receiver: verify cert against the CA, verify signature, read the class *)
+let receiver(ca_pk: pkey) =
+  in(c, (crt: bitstring, s: bitstring));
+  let signer_pk = checkcert(crt, ca_pk) in
+  let body = checksign(s, signer_pk) in
+  let seg(seg_content, claimed, seg_warrant) = body in
+  event OriginAccepted(signer_pk, claimed).
+
+(* an attacker-run rogue agent with its own (uncertified) key *)
+let rogue() =
+  new rk: skey;
+  out(c, pk(rk)).
+
+process
+  ( (! origin(origin_sk, ca_sk))
+  | (! receiver(pk(ca_sk)))
+  | (! rogue())
+  )

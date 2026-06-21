@@ -1,0 +1,43 @@
+# CAPM testbed configuration
+# These values map onto EvaluatorPolicy (capm/warrant/evaluator.py).
+# The penalty constants are the central research knob: they set how fast
+# warrant erodes per honest hop (the T2 "warrant-erosion magnitude" question).
+
+evaluator_policy:
+  # Warrant lattice floors (NONE=0, WEAK=1, DERIVED=2, MODERATE=3, STRONG=4)
+  min_accept: MODERATE        # warrant >= this -> ACCEPT
+  min_down_weight: WEAK       # warrant >= this (but < min_accept) -> DOWN_WEIGHT
+
+  # Boundary penalties. A *verified* cross-org hop (signature ok + trusted DID)
+  # costs `boundary_penalty_per_cross`; an *unverified* one costs more.
+  boundary_penalty_per_cross: 0
+  unverified_boundary_penalty: 1
+
+  require_signatures: true
+  require_soft_binding: false   # set true for the S3 text-only scenario
+
+  # Ablation toggles (E8.x) + adaptive-adversary defenses. All true = full CAPM.
+  enforce_origin_ceiling: true        # E8.1 cap warrant by declared source class
+  apply_transformation_penalty: true  # E8.2 fidelity penalty per transformation
+  enable_soft_binding_check: true     # E8.4 compare watermark to delivered bytes
+  cross_org_aware: true               # E8.5 treat org boundaries as first-class
+  detect_transformation_lies: true    # E3.1 verbatim claim must preserve bytes
+
+benchmark:
+  hop_counts: [2, 3, 4, 5]
+  # weak (non-adaptive) injectors + adaptive adversaries (attacks/adaptive)
+  attacks: [admit, flooding_spread, causality_laundering]
+  adaptive_adversaries: [origin_capture, lying_transformation,
+                         manifest_forgery_fake_sig, manifest_forgery_replay,
+                         manifest_forgery_substitute_vc, collusion]
+  defenses: [no_defense, identity_only, flat_provenance, camel_single_runtime, capm]
+
+# Optional real-model responders (E4.x). Used by capm.agents.responders.LLMResponder.
+responders:
+  default: deterministic       # deterministic | llm | scripted
+  llm_model: claude-opus-4-8   # frontier tier; E4.2 sweeps sonnet-4-6 / haiku-4-5
+
+# Optional SAGA backing (see capm/adapters/saga_adapter.py)
+saga:
+  enabled: false              # honoured via CAPM_USE_SAGA=1 env var
+  provider_url: null

@@ -1,0 +1,27 @@
+# Core runtime dependency (Ed25519 signing/verification for the manifest layer)
+cryptography>=42.0.0
+
+# Testing
+pytest>=8.0.0
+
+# --- Optional integrations (not required to run the standalone testbed) ---
+# SAGA (gsiros/saga) for real cross-agent Plane-1 transport. Clone into
+# vendor/saga and `pip install -e vendor/saga`, then set CAPM_USE_SAGA=1.
+#   git+https://github.com/gsiros/saga.git
+#
+# Real LLM responders (E4.x; capm.agents.responders.LLMResponder):
+#   anthropic>=0.40.0        # set ANTHROPIC_API_KEY; default model claude-opus-4-8
+#   openai>=1.0.0
+#
+# Cross-org task benchmark (E5.4/E1.3/E5.x; capm.benchmark.agentdojo_crossorg):
+#   agentdojo>=0.1.34
+#
+# Formal verification (E2.1): install ProVerif (system package, not pip):
+#   https://bblanche.gitlabpages.inria.fr/proverif/
+#
+# W3C PROV serialisation (if you want full PROV-O export beyond the built-in
+# triple emitter):
+#   prov>=2.0.0
+#
+# C2PA tooling (hard/soft binding interop with the media ecosystem):
+#   c2pa>=0.5.0
