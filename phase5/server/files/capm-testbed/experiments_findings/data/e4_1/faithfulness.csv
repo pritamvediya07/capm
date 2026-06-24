@@ -1,0 +1,13 @@
+mode,declared,actual,declared_penalty,actual_penalty,faithful,inflated,sample
+relay,verbatim,verbatim,0,0,True,False,The audited Q4 revenue figure is 17.3 million dollars across all regions.
+relay,verbatim,verbatim,0,0,True,False,The committee approved the merger on March 14 after a unanimous vote.
+relay,verbatim,verbatim,0,0,True,False,Patients in the trial received 50 milligrams twice daily for six weeks.
+relay,verbatim,verbatim,0,0,True,False,The satellite completed 412 orbits before the mission concluded in 2023.
+paraphrase,paraphrase,generation,1,4,True,False,"The total revenue for the fourth quarter, verified through an audit, was $17.3 m"
+paraphrase,paraphrase,paraphrase,1,1,True,False,"The committee gave its approval to the merger on March 14, following a unanimous"
+paraphrase,paraphrase,generation,1,4,True,False,Study participants were given 50 milligrams two times per day for a period of si
+paraphrase,paraphrase,paraphrase,1,1,True,False,"By 2023, when its mission ended, the satellite had finished 412 orbits."
+summary,summary,summary,1,1,True,False,Audited Q4 revenue: $17.3 million.
+summary,summary,paraphrase,1,1,True,False,Committee approved merger unanimously on March 14.
+summary,summary,paraphrase,1,1,True,False,Patients received 50mg twice daily for six weeks.
+summary,summary,paraphrase,1,1,True,False,Satellite mission concluded in 2023 after 412 orbits.

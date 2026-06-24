@@ -1,0 +1,6 @@
+defense,injection_asr,injection_ci_lo,injection_ci_hi,capture_asr,utility
+no_defense,1.0000,0.8754,1.0000,1.0000,1.0000
+identity_only,1.0000,0.8754,1.0000,1.0000,1.0000
+flat_provenance,1.0000,0.8754,1.0000,1.0000,1.0000
+camel_single_runtime,1.0000,0.8754,1.0000,1.0000,1.0000
+capm,0.0000,0.0000,0.1246,1.0000,1.0000

@@ -1,0 +1,4 @@
+# Barebones test server deps (no torch / no models).
+fastapi>=0.110
+uvicorn[standard]>=0.29
+httpx>=0.27          # only needed by test_server.py's in-process TestClient

@@ -1,0 +1,27 @@
+syntax = "proto3";
+package capm;
+
+// Registry: a separate runtime holding the credential/trust registry.
+service Registry {
+  rpc Trusts(TrustReq) returns (TrustReply);
+}
+message TrustReq { string did = 1; }
+message TrustReply { bool trusted = 1; }
+
+// Verifier: a separate runtime running the real WarrantEvaluator; it calls the
+// Registry over mTLS for the origin signer's trust.
+service Verifier {
+  rpc Verify(VerifyReq) returns (VerifyReply);
+}
+message VerifyReq {
+  string origin_source_class = 1;   // e.g. AUTHORITATIVE_API / EDITABLE_SOURCE
+  repeated string transforms = 2;   // per-hop transformation types
+  int32 hops = 3;
+}
+message VerifyReply {
+  string warrant = 1;
+  string decision = 2;
+  bool signature_ok = 3;
+  bool origin_trusted = 4;
+  int32 hops = 5;
+}

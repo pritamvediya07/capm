@@ -1,0 +1,13 @@
+# generated / not for copy
+**/.venv/
+**/__pycache__/
+*.pyc
+
+# stale/dead env that was dropped from the server copy (regenerated fresh on the target)
+server/files/capm-testbed/.venv/
+
+# capm-p5 runtime artifacts (built/generated on the target box, never copied)
+server/capm-p5/models/
+server/capm-p5/artifacts/
+server/capm-p5/certs/
+server/capm-p5/.env
